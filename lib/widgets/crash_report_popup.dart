@@ -13,14 +13,9 @@ import 'package:share_plus/share_plus.dart';
 // Pop-up window shown when the app crashes
 // Shows information about the error and the option to share it outside the app
 
-showCrashReport(BuildContext context, String errorMessage, String stack,
-    [String? information]) {
+showCrashReport(BuildContext context, String errorMessage, String stack) {
   final errorLogController = TextEditingController();
   errorLogController.text = "$errorMessage\n\n$stack";
-  if (information != null) {
-    errorLogController.text += "\n\n$information";
-  }
-
   ScrollController scrollController = ScrollController();
   return showDialog(
       context: context,
@@ -151,7 +146,8 @@ void sendOverEmail(BuildContext context, String text) async {
   final Uri emailLaunchUri = Uri(
     scheme: 'mailto',
     path: 'indexax@victormarino.com',
-    query: 'subject=${'crash_report.email_subject'.tr()}&body=$text',
+    query: 
+      'subject=${'crash_report.email_subject'.tr()}&body=$text',
   );
   if (await canLaunchUrl(emailLaunchUri)) {
     await launchUrl(emailLaunchUri);

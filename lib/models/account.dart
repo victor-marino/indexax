@@ -28,10 +28,6 @@ class Account {
       sharpe,
       profitLoss,
       expectedReturn,
-      bestReturn1yr,
-      worstReturn1yr,
-      bestReturn10yr,
-      worstReturn10yr,
       feeFreeAmount,
       additionalCashNeededToTrade;
   final Color timeReturnColor, moneyReturnColor, profitLossColor;
@@ -78,18 +74,6 @@ class Account {
                 accountPerformanceData['return']['volatility'].toDouble(),
         expectedReturn =
             accountPerformanceData['plan_expected_return'].toDouble(),
-        bestReturn1yr =
-            (accountPerformanceData['performance']['best_pl'][13] / 100)
-                .toDouble(),
-        worstReturn1yr =
-            (accountPerformanceData['performance']['worst_pl'][13] / 100)
-                .toDouble(),
-        bestReturn10yr =
-            (accountPerformanceData['performance']['best_pl'][120] / 100)
-                .toDouble(),
-        worstReturn10yr =
-            (accountPerformanceData['performance']['worst_pl'][120] / 100)
-                .toDouble(),
         profitLoss = accountPerformanceData['return']['pl'].toDouble(),
         profitLossColor =
             getNumberColor(accountPerformanceData['return']['pl'].toDouble()),

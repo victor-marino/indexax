@@ -24,19 +24,17 @@ void main() async {
   // Show a crash report dialogue in case of any uncaught exceptions
   FlutterError.onError = (details) {
     FlutterError.presentError(details);
-    final information = details.informationCollector?.call() ?? [];
     showCrashReport(
       navigator.currentContext!,
       details.exception.toString(),
       details.stack.toString(),
-      information.toString(),
     );
   };
   PlatformDispatcher.instance.onError = (error, stack) {
     showCrashReport(
       navigator.currentContext!,
       error.toString(),
-      stack.toString()
+      stack.toString(),
     );
     return true;
   };
